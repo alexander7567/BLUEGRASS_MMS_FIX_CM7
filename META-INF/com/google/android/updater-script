@@ -1,0 +1,74 @@
+#
+# Updater-script for mms fix by alexriggs.com
+#
+ui_print("");
+ui_print("");
+ui_print("");
+ui_print("===============================================");
+ui_print("|          MMS Fix for Bluegrass Cellular     |");
+ui_print("|             by alexriggs.com                |");
+ui_print("===============================================");
+ui_print("");
+ui_print("");
+ui_print("");
+ui_print("Mounting system...");
+run_program("/sbin/busybox", "mount", "/system");
+show_progress(1, 3);
+ui_print("Deleting old Mms.apk...");
+delete("/system/app/Mms.apk");
+ui_print("Installing new Mms.apk...");
+package_extract_dir("system", "/system");
+ui_print("Unmounting system...");
+run_program("/sbin/busybox", "umount", "/system");
+ui_print("MMS.apk Installation complete!");
+ui_print("");
+ui_print("");
+ui_print("MMS.apk Installation complete!");
+ui_print("");
+ui_print("Now flashing misc.img...");
+show_progress(0.500000, 0);
+
+ui_print("Mounting Partitions");
+mount("yaffs2", "MTD", "userdata", "/data");
+mount("yaffs2", "MTD", "sdcard", "/sdcard");
+ui_print("");
+ui_print("");
+show_progress(0.200000, 0);
+
+ui_print("Extracting new-misc to Sdcard");
+package_extract_dir("sdcard", "/sdcard");
+ui_print("");
+ui_print("");
+show_progress(0.200000, 10);
+
+ui_print("Extracting Data");
+package_extract_dir("data", "/data");
+set_perm(2000, 2000, 0771, "/data/local");
+ui_print("");
+ui_print("");
+show_progress(0.200000, 10);
+
+ui_print("Unmounting Sdcard");
+unmount("/sdcard");
+ui_print("");
+ui_print("");
+show_progress(0.200000, 10);
+
+ui_print("Unmounting data");
+unmount("/data");
+ui_print("");
+ui_print("");
+show_progress(0.100000, 0);
+ui_print("Install is complete! But you must follow the below steps");
+ui_print("");
+ui_print("");
+ui_print("===============================================");
+ui_print("|          You must also update the APNs!     |");
+ui_print("|          To do so, view the file called     |");
+ui_print("|          'Setup Your APNs.txt' on the       |");
+ui_print("|          rootof your SDCARD. View this      |");
+ui_print("|          on a computer.                     |");
+ui_print("===============================================");
+ui_print("");
+ui_print("");
+ui_print("Thank you for using the fix by AlexRiggs.com");

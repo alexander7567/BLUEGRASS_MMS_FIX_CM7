@@ -1,0 +1,64 @@
+Follow these steps exactly to get your MMS working. These steps will only work
+for Bluegrass Cellular. 
+
+
+1. Turn on WiFi and make sure you're connected. 
+2. Go into the Market, search "APN Backup". 
+3. Download the program called "APNsBU (ROOT)"
+4. Open the program and click on the "Backup APNs" button.
+5. Push Menu button
+6. Click "View APNs"
+7. IF there is a APN already setup, click the APN... if not, click menu -> New APN
+8. Replace/Insert the following:
+
+		Name
+		Bluegrass Cellular (this doesn't matter, can be named anything)
+
+		APN
+		internet
+
+		Proxy
+		66.255.55.23
+
+		Port
+		9201
+
+		Username
+		%M@myblueworks.com
+
+		Password
+		blue
+
+		Server
+		*
+
+		MMSC
+		http;//mms.iot1.com/bluegrass/mms.php
+
+		MMS proxy
+		66.255.55.23
+
+		MMS port
+		9201
+
+		MCC
+		DO NOT CHANGE THIS, LEAVE THE NUMBER THAT IS THERE
+
+		MNC
+		DO NOT CHANGE THIS, LEAVE THE NUMBER THAT IS THERE
+
+		Authentication type
+		PAP or CHAP
+
+		APN
+		mms
+
+
+		APN protocol
+		IPv4
+		
+		
+9. Menu -> Save
+10. Click your back button
+11. Backup the new APN as a new backup name such as "fixedAPN"
+12. You are now done!
